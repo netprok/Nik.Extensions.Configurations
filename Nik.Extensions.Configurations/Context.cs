@@ -9,7 +9,7 @@ public static class Context
     private const string Staging = "Staging";
     private const string Production = "Production";
 
-    private const string AppSettingsFile = "appsettings.json";
+    private static string AppSettingsFile => "appsettings.json";
 
     private static readonly string[] ValidEnvironments = [Development, Staging, Production];
 
@@ -51,7 +51,7 @@ public static class Context
         System.Environment.SetEnvironmentVariable(AspNetCoreVariable, _environment);
 
         IConfigurationBuilder builder = new ConfigurationBuilder()
-                    .AddJsonFile(AppSettingsFile)
+                    .AddJsonFile(GetFullPath(AppSettingsFile))
                     .AddJsonFile(GetEnvironmentFile(_environment));
 
         if (additionalFiles.Length > 0)
@@ -85,7 +85,7 @@ public static class Context
         }
 
         var jsonEnvironment = new ConfigurationBuilder()
-                   .AddJsonFile(AppSettingsFile)
+                   .AddJsonFile(GetFullPath(AppSettingsFile))
                    .Build()
                    .GetValue<string>("EnvironmentName")!;
 
@@ -103,8 +103,11 @@ public static class Context
 
     private static string GetEnvironmentFile(string environment)
     {
-        return $"appsettings.{environment}.json";
+        return GetFullPath($"appsettings.{environment}.json");
     }
+
+    private static string GetFullPath(string fileName) =>
+        Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
 
     private static void DeleteOtherSettingsFiles()
     {
