@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-namespace Nik.Extensions.Configurations;
+﻿namespace Nik.Extensions.Configurations;
 
 public static class Context
 {
@@ -11,13 +9,13 @@ public static class Context
     private const string Staging = "Staging";
     private const string Production = "Production";
 
-    private static string AppSettingsFile => GetFullPath("appsettings.json");
-
     private static readonly string[] ValidEnvironments = [Development, Staging, Production];
 
     private static string? _environment;
 
     private static IConfigurationRoot? _configuration;
+
+    private static string AppSettingsFile => GetFullPath("appsettings.json");
 
     public static string Environment
     {
