@@ -1,4 +1,4 @@
-﻿namespace Nik.Common;
+﻿namespace Nik.Extensions.Configurations;
 
 public static class Context
 {

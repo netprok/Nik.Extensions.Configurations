@@ -1,4 +1,6 @@
-﻿namespace Nik.Common.Tests;
+﻿using Nik.Extensions.Configurations;
+
+namespace Nik.Extensions.Configurations.Tests;
 
 public class ConfigurationTests
 {
