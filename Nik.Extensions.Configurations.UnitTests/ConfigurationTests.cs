@@ -1,6 +1,4 @@
-﻿using Nik.Extensions.Configurations;
-
-namespace Nik.Extensions.Configurations.Tests;
+﻿namespace Nik.Extensions.Configurations.Tests;
 
 public class ConfigurationTests
 {
@@ -9,7 +7,7 @@ public class ConfigurationTests
         return Host.CreateDefaultBuilder()
            .ConfigureServices((services) =>
            {
-               services.InitAppContext();
+               services.InitContext();
            })
            .Build();
     }

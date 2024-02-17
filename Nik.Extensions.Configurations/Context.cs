@@ -43,7 +43,7 @@ public static class Context
 
     public static bool IsDevelopment => Environment.Equals("development", StringComparison.OrdinalIgnoreCase);
 
-    public static IServiceCollection InitAppContext(this IServiceCollection services, params string[] additionalFiles)
+    public static IServiceCollection InitContext(this IServiceCollection services, params string[] additionalFiles)
     {
         _environment = GetEnvironmentFromAppSettingsFile();
 
@@ -73,7 +73,7 @@ public static class Context
     {
         if (_configuration is null || _environment is null)
         {
-            throw new Exception("App context has not been initialized yet, call services.InitAppContext()");
+            throw new Exception("Context has not been initialized yet, call services.InitContext()");
         }
     }
 
