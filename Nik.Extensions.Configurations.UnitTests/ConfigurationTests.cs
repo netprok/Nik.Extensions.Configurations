@@ -17,12 +17,12 @@ public class ConfigurationTests
     {
         _ = PrepareHost();
 
-        AppContext.Environment.Should().Be("Staging");
+        Context.Environment.Should().Be("Staging");
 
-        var options = AppContext.Configuration.GetSection("Test").Value;
+        var options = Context.Configuration.GetSection("Test").Value;
         options.Should().BeNull();
 
-        var testObject = AppContext.Configuration.GetSection("TestSection").Get<TestClass>();
+        var testObject = Context.Configuration.GetSection("TestSection").Get<TestClass>();
         testObject.Key.Should().Be("Name");
         testObject.Value.Should().Be("Nik");
     }

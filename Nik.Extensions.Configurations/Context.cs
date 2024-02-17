@@ -1,6 +1,6 @@
 ﻿namespace Nik.Common;
 
-public static class AppContext
+public static class Context
 {
     private const string DotnetVariable = "DOTNET_ENVIRONMENT";
     private const string AspNetCoreVariable = "ASPNETCORE_ENVIRONMENT";
