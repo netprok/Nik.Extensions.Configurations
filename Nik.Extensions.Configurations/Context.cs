@@ -1,4 +1,6 @@
-﻿namespace Nik.Extensions.Configurations;
+﻿using System.Reflection;
+
+namespace Nik.Extensions.Configurations;
 
 public static class Context
 {
@@ -9,7 +11,7 @@ public static class Context
     private const string Staging = "Staging";
     private const string Production = "Production";
 
-    private static string AppSettingsFile => "appsettings.json";
+    private static string AppSettingsFile => GetFullPath("appsettings.json");
 
     private static readonly string[] ValidEnvironments = [Development, Staging, Production];
 
@@ -51,7 +53,7 @@ public static class Context
         System.Environment.SetEnvironmentVariable(AspNetCoreVariable, _environment);
 
         IConfigurationBuilder builder = new ConfigurationBuilder()
-                    .AddJsonFile(GetFullPath(AppSettingsFile))
+                    .AddJsonFile(AppSettingsFile)
                     .AddJsonFile(GetEnvironmentFile(_environment));
 
         if (additionalFiles.Length > 0)
@@ -81,11 +83,11 @@ public static class Context
     {
         if (!File.Exists(AppSettingsFile))
         {
-            throw new Exception($"App settings file not found: {Path.GetFullPath(AppSettingsFile)}");
+            throw new Exception($"App settings file not found: {AppSettingsFile}");
         }
 
         var jsonEnvironment = new ConfigurationBuilder()
-                   .AddJsonFile(GetFullPath(AppSettingsFile))
+                   .AddJsonFile(AppSettingsFile)
                    .Build()
                    .GetValue<string>("EnvironmentName")!;
 
@@ -107,7 +109,7 @@ public static class Context
     }
 
     private static string GetFullPath(string fileName) =>
-        Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
+        Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!, fileName);
 
     private static void DeleteOtherSettingsFiles()
     {
