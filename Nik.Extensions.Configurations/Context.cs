@@ -81,7 +81,7 @@ public static class Context
     {
         if (!File.Exists(AppSettingsFile))
         {
-            throw new Exception($"App settings file not found: {AppSettingsFile}");
+            throw new Exception($"App settings file not found: {Path.GetFullPath(AppSettingsFile)}");
         }
 
         var jsonEnvironment = new ConfigurationBuilder()
