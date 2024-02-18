@@ -71,6 +71,11 @@ public static class Context
         return services;
     }
 
+    public static T? GetSection<T>(this IConfiguration configuration, string name)
+    {
+        return configuration.GetSection(name).Get<T>();
+    }
+
     public static T? GetSection<T>(this IConfiguration configuration)
     {
         string? name = null;
@@ -88,7 +93,7 @@ public static class Context
             name = typeof(T).Name;
         }
 
-        return configuration.GetSection(name).Get<T>();
+        return configuration.GetSection<T>(name);
     }
 
     private static void CheckIfInitialized()
