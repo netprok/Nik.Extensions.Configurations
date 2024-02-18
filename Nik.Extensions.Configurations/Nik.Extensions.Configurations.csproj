@@ -18,4 +18,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Nik.Extensions.Configurations.Models\Nik.Extensions.Configurations.Models.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -22,12 +22,21 @@ public class ConfigurationTests
         var options = Context.Configuration.GetSection("Test").Value;
         options.Should().BeNull();
 
-        var testObject = Context.Configuration.GetSection("TestSection").Get<TestClass>();
-        testObject.Key.Should().Be("Name");
-        testObject.Value.Should().Be("Nik");
+        var secret = Context.Configuration.GetSection("TestSection").Get<MySecret>();
+        secret.Key.Should().Be("Name");
+        secret.Value.Should().Be("Nik");
+
+        var book = Context.Configuration.GetSection<Book>();
+        book.Status.Should().Be("New");
     }
 
-    private class TestClass
+    [ConfigurationName("BookConfig")]
+    private class Book
+    {
+        public string Status { get; set; }
+    }
+
+    private class MySecret
     {
         public string Key { get; set; }
         public string Value { get; set; }

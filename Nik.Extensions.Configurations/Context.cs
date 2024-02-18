@@ -1,4 +1,6 @@
-﻿namespace Nik.Extensions.Configurations;
+﻿using Nik.Extensions.Configurations.Models;
+
+namespace Nik.Extensions.Configurations;
 
 public static class Context
 {
@@ -67,6 +69,26 @@ public static class Context
         _configuration = builder.Build();
 
         return services;
+    }
+
+    public static T? GetSection<T>(this IConfiguration configuration)
+    {
+        string? name = null;
+
+        if (Attribute.IsDefined(typeof(T), typeof(ConfigurationNameAttribute)))
+        {
+            var attribute = Attribute.GetCustomAttribute(typeof(T), typeof(ConfigurationNameAttribute)) as ConfigurationNameAttribute;
+            if (attribute is not null)
+            {
+                name = attribute.Name;
+            }
+        }
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            name = typeof(T).Name;
+        }
+
+        return configuration.GetSection(name).Get<T>();
     }
 
     private static void CheckIfInitialized()

@@ -12,6 +12,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nik.Extensions.Configuratio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nik.Extensions.Configurations.Tests", "Nik.Extensions.Configurations.UnitTests\Nik.Extensions.Configurations.Tests.csproj", "{F6644983-655B-44E2-BE1F-55ACD18CC934}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nik.Extensions.Configurations.Models", "Nik.Extensions.Configurations.Models\Nik.Extensions.Configurations.Models.csproj", "{F2F32700-1995-4616-8109-51696E94AD2B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{F6644983-655B-44E2-BE1F-55ACD18CC934}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6644983-655B-44E2-BE1F-55ACD18CC934}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6644983-655B-44E2-BE1F-55ACD18CC934}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2F32700-1995-4616-8109-51696E94AD2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2F32700-1995-4616-8109-51696E94AD2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2F32700-1995-4616-8109-51696E94AD2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2F32700-1995-4616-8109-51696E94AD2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
