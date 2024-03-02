@@ -60,7 +60,7 @@ public static class Context
         {
             foreach (var file in additionalFiles)
             {
-                builder.AddJsonFile(file);
+                builder.AddJsonFile(TranslateTokens(file, _environment));
             }
         }
 
@@ -69,6 +69,11 @@ public static class Context
         _configuration = builder.Build();
 
         return services;
+    }
+
+    private static string TranslateTokens(string file, string environment)
+    {
+        return file.Replace("%env%", environment);
     }
 
     public static T? GetSection<T>(this IConfiguration configuration, string name)
