@@ -1,4 +1,4 @@
-dotnet pack -c Release -p:Version=1.3.13
+dotnet pack -c Release -p:Version=1.0.0
 
-nuget add '.\Nik.Extensions.Configurations\bin\Release\Nik.Extensions.Configurations.1.3.13.nupkg' -source 'D:\OneDrive\Software Development\nik-nuget-package-source'
-nuget add '.\Nik.Extensions.Configurations.Models\bin\Release\Nik.Extensions.Configurations.Models.1.3.13.nupkg' -source 'D:\OneDrive\Software Development\nik-nuget-package-source'
+nuget add '.\Nik.Extensions.Configurations\bin\Release\Nik.Extensions.Configurations.1.0.0.nupkg' -source 'D:\OneDrive\Software Development\nik-nuget-package-source'
+nuget add '.\Nik.Extensions.Configurations.Models\bin\Release\Nik.Extensions.Configurations.Models.1.0.0.nupkg' -source 'D:\OneDrive\Software Development\nik-nuget-package-source'
